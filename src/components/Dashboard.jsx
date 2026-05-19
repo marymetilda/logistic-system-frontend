@@ -153,8 +153,8 @@ export default function Dashboard() {
 
           <div className="analytics-list">
             {analytics.map((route, index) => {
-              const fromHub = hubs.find((h) => h._id === route.from);
-              const toHub = hubs.find((h) => h._id === route.to);
+              const fromHub = route.fromHub;
+              const toHub = route.toHub;
               return (
                 <div
                   key={route._id}
@@ -165,7 +165,7 @@ export default function Dashboard() {
                   </p>
 
                   <p className="analytics-stat">
-                    {fromHub ? fromHub.name : route.from} → {toHub ? toHub.name : route.to}
+                    {fromHub ? fromHub.name : "—"} → {toHub ? toHub.name : "—"}
                   </p>
 
                   <p className="analytics-stat">
@@ -217,19 +217,19 @@ export default function Dashboard() {
 
             <tbody>
                {routes.map((route) => {
-                 const fromHub = hubs.find((h) => h._id === route.from);
-                 const toHub = hubs.find((h) => h._id === route.to);
-                 return (
-                   <tr
-                     key={route._id}
-                   >
-                     <td>
-                       {fromHub ? fromHub.name : route.from}
-                     </td>
+                  const fromHub = route.fromHub;
+                  const toHub = route.toHub;
+                  return (
+                    <tr
+                      key={route._id}
+                    >
+                      <td>
+                        {fromHub ? fromHub.name : "—"}
+                      </td>
 
-                     <td>
-                       {toHub ? toHub.name : route.to}
-                     </td>
+                      <td>
+                        {toHub ? toHub.name : "—"}
+                      </td>
 
                      <td>
                        {route.distance} km
